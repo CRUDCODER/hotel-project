@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.GoodsMapper">
+    <update id="modifyGoodsCount" parameterType="com.liujin.entity.Goods">
+        update goods set goods_count=goods_count-${goodsCount} where goods_id=#{goodsId}
+    </update>
+    <update id="increaseGoodsCount">
+        update goods set goods_count=goods_count+${goodsCount} where goods_id=#{goodsId}
+    </update>
+
+    <select id="fetchGoodsInfo" resultType="com.liujin.entity.Goods" parameterType="com.liujin.entity.Goods">
+        select goods_id,goods_name,a.goods_category_id,goods_price,goods_img,goods_count,goods_category_name as goodsCategoryName
+        from goods a,goods_category b where a.goods_category_id=b.goods_category_id
+        <include refid="baseMap"></include>
+    </select>
+
+    <sql id="baseMap">
+        <if test="goodsId!=null and goodsId!=''">
+            and a.goods_id=#{goodsId}
+        </if>
+        <if test="goodsCategoryId!=null and goodsCategoryId!=''">
+            and a.goods_category_id=#{goodsCategoryId}
+        </if>
+        <if test="goodsCount!=null and goodsCount!=''">
+            and a.goods_count&gt;=#{goodsCount}
+        </if>
+        <if test="count2!=null and count2!=''">
+            and a.goods_count&lt;=${count2}
+        </if>
+    </sql>
+</mapper>

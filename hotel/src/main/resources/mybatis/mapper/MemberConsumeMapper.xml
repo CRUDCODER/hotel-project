@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.MemberConsumeMapper">
+
+    <select id="fetchMemberConsume" resultType="com.liujin.entity.MemberConsume">
+        select consume_id,a.member_id,consume_category,consume_money,consume_date,
+               member_name as memberName,member_number as memberNumber
+        from member_consume a,member b
+        where a.member_id=b.member_id
+        <include refid="baseMap"></include>
+    </select>
+
+    <sql id="baseMap">
+
+    </sql>
+</mapper>

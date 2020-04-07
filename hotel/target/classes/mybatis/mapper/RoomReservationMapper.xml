@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.RoomReservationMapper">
+    <select id="fetchRoomReservation" resultType="com.liujin.entity.RoomReservation">
+
+        select reservation_id,a.member_id,a.room_id,pay_money,pay_date,reservation_flag,reservation_date,reservation_remark,
+               member_name as memberName,member_number as memberNumber,
+               member_phone as memberPhone,room_number as roomNumber,reservation_number
+        from room_reservation a,room b,member c
+        where a.room_id=b.room_id and a.member_id=c.member_id
+        <include refid="baseMap"></include>
+    </select>
+    <select id="selectMaxReservationNumber" resultType="java.lang.Integer">
+        select max(reservation_number)
+        from room_reservation;
+    </select>
+    <select id="statistical" resultType="com.liujin.entity.RoomReservation">
+        select COUNT(1) as value,reservation_flag from room_reservation GROUP BY reservation_flag
+    </select>
+
+    <sql id="baseMap">
+        <if test="memberId!=null and memberId!=''">
+            and a.member_id=#{memberId}
+        </if>
+        <if test="reservationFlag!=null">
+            and a.reservation_flag=${reservationFlag}
+        </if>
+        <if test="memberNumber!=null and memberNumber!=''">
+            and member_number=#{memberNumber}
+        </if>
+        <if test="memberPhone!=null and memberPhone!=''">
+            and member_phone=#{memberPhone}
+        </if>
+    </sql>
+</mapper>

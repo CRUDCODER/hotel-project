@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.MemberExchangeMapper">
+    <select id="fetchMemberExchange" resultType="com.liujin.entity.MemberExchange">
+
+        select exchange_id,a.member_id,a.coupons_id,exchange_date,exchange_flag,consume_score
+        ,member_number as memberNumber,member_name as memberName,coupons_name as couponsName
+        from member_exchange a,member b,coupons c
+        where a.member_id=b.member_id and a.coupons_id=c.coupons_id
+        <include refid="baseMap"></include>
+    </select>
+    <select id="queryMemberEchangeByCouponsName" resultType="com.liujin.entity.MemberExchange">
+        select *
+        from member_exchange a,coupons b where a.coupons_id=b.coupons_id and b.coupons_name=#{couponsName};
+
+    </select>
+
+    <sql id="baseMap">
+        <if test="memberId!=null and memberId!=''">
+            and a.member_id=#{memberId}
+        </if>
+        <if test="exchangeFlag!=null and exchangeFlag!=''">
+            and a.exchange_flag=#{exchangeFlag}
+        </if>
+    </sql>
+</mapper>

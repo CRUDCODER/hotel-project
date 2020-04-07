@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.ReplaceRoomMapper">
+    <select id="fetchReplaceRoom" resultType="com.liujin.entity.ReplaceRoom">
+
+        select *
+        from replaces a,live b,room c,reception d
+        where a.live_id=b.live_id and a.room_id=c.room_id and b.reception_id=d.reception_id
+
+
+    </select>
+</mapper>

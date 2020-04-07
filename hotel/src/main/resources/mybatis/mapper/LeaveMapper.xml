@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.LeaveMapper">
+    <insert id="insertLeave">
+        INSERT INTO `leave` ( leave_date, refund_money, live_id,leave_remark ) VALUES ( #{leaveDate}, #{refundMoney}, #{liveId},#{leaveRemark} );
+    </insert>
+
+    <select id="fetchLeave" resultType="com.liujin.entity.Leave">
+
+        select *
+        from `leave` a,live b,reception c,room d
+        where a.live_id=b.live_id and b.reception_id=c.reception_id and c.room_id=d.room_id
+
+    </select>
+</mapper>

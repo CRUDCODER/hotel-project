@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.ContractMapper">
+
+    <select id="fetchContract" resultType="com.liujin.entity.Contract">
+        select *
+        from hotel.contract a,live b,reception c,room d
+        where a.live_id=b.live_id and b.reception_id=c.reception_id and c.room_id=d.room_id
+    </select>
+</mapper>

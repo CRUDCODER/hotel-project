@@ -1,0 +1,23 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /hotel/api
+spring:
+  datasource:
+    password: 990310
+    username: root
+    url: jdbc:mysql://localhost:3306/hotel
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/config.xml
+
+pagehelper:
+  helper-dialect: mysql
+logging:
+  level:
+    com:
+      liujin:
+        mapper: debug

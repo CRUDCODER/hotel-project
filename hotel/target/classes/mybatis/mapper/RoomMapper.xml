@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.RoomMapper">
+    <select id="fetchRooms" resultType="com.liujin.entity.Room" parameterType="com.liujin.entity.Room">
+        select room_id,room_number,
+               a.room_category_id,
+               room_area,
+               room_floor,
+               room_floor,
+               room_money,
+               room_flag,
+               room_category_name as categoryName
+                from room a, room_category b
+                where a.room_category_id=b.room_category_id
+    <include refid="baseMap"></include>
+    </select>
+
+
+    <sql id="baseMap">
+        <if test="roomNumber!=null">
+            and room_number=#{roomNumber}
+        </if>
+        <if test="roomMoney!=null and roomMoney!=0">
+            and room_money&gt;=#{roomMoney}
+        </if>
+        <if test="price2!=null and price2!=0 ">
+            and room_money&lt;=#{price2}
+        </if>
+        <if test="roomFlag!=null">
+            and room_flag=#{roomFlag}
+        </if>
+        <if test="roomCategoryId!=null">
+            and a.room_category_id=#{roomCategoryId}
+        </if>
+
+    </sql>
+</mapper>

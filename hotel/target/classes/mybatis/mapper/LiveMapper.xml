@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.LiveMapper">
+
+    <select id="fetchLive" resultType="com.liujin.entity.Live">
+        select live_id,live_date,live_money,live_remark
+        ,guest_name as guestName,guest_card as guestCard,guest_phone as guestPhone
+        ,room_number as roomNumber,end_date,live_flag
+        from live a,reception b ,room d
+        where a.reception_id=b.reception_id
+        and b.room_id=d.room_id
+        <include refid="baseMap"></include>
+    </select>
+
+    <sql id="baseMap">
+
+        <if test="guestName!=null and guestName!=''">
+                and b.guest_name=#{guestName}
+        </if>
+        <if test="guestPhone!=null and guestPhone!=''">
+                and b.guest_phone=#{guestPhone}
+        </if>
+        <if test="liveFlag!=null">
+            and a.live_flag=#{liveFlag}
+        </if>
+        <if test="guestFlag!=null">
+            and b.guest_flag=#{guestFlag}
+        </if>
+
+
+
+    </sql>
+
+    <select id="selectLiveToday" resultType="com.liujin.entity.Live">
+
+        SELECT * from live a,reception b,room c
+        where YEAR(live_date) = YEAR(NOW())
+          and MONTH(live_date) = MONTH(NOW())
+          AND DATE(live_date)=DATE(NOW())
+          and live_flag=1 and a.reception_id=b.reception_id and b.room_id=c.room_id
+    </select>
+    <select id="selectLiveAll" resultType="com.liujin.entity.Live">
+        select *
+        from live a,reception b,room c
+        where a.reception_id=b.reception_id and b.room_id=c.room_id and a.live_flag=1
+    </select>
+    <select id="selectAllExpire" resultType="com.liujin.entity.Live">
+        select * from live a,reception b where  end_date&lt;#{date} and live_flag=1 and a.reception_id=b.reception_id
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.RoomGoodsMapper">
+    <select id="fetchRoomGoods" resultType="com.liujin.entity.RoomGoods" parameterType="com.liujin.entity.RoomGoods">
+        select room_goods_id,a.room_id,a.goods_id,a.goods_count,date_updated,room_number as roomNumber,goods_name as goodsName
+        from room_goods a,room b,goods c where a.room_id=b.room_id and a.goods_id=c.goods_id order by a.room_goods_id
+    </select>
+    <select id="fetchGoodsByRoomNumber" resultType="com.liujin.entity.RoomGoods">
+        select
+            goods_name,a.goods_count
+        from room_goods a,room b ,goods c
+        WHERE a.room_id=b.room_id
+          and a.goods_id=c.goods_id and b.room_number=#{roomNumber}
+    </select>
+</mapper>

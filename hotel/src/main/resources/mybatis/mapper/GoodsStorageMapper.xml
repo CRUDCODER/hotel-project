@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liujin.mapper.GoodsStorageMapper">
+
+    <select id="fetchGoodsStorage" resultType="com.liujin.entity.GoodsStorage"
+    parameterType="com.liujin.entity.GoodsStorage">
+        select storage_id,a.goods_id,storage_date,storage_count,storage_admin,goods_name as  goodsName
+        from goods_storage a,goods b where a.goods_id=b.goods_id <include refid="baseMap"></include>
+    </select>
+    <sql id="baseMap">
+        <if test="goodsId!=null and goodsId!=''">
+            and a.goods_id=#{goodsId}
+        </if>
+    </sql>
+</mapper>
