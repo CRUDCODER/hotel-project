@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.5.4/css/layui.css" media="all">
+    <script src="../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="../../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script src="../../js/page_api/config.js"></script>
+    <script src="../../js/page_api/roomCategory/modify.js"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">类别名称：</label>
+                <div class="layui-input-block">
+                    <input type="text"  id="roomCategoryName"  placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">类别备注：</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" id="roomCategoryRemark" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" id="tijiao">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+    <script src="../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="../../lib/layui-v2.5.4/layui.js"></script>
+    <script src="../../js/page_api/leaves/increase.js"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-form" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">入住信息：</label>
+                <div class="layui-input-block">
+                    <select name="liveId" id="guest" lay-verify="required" lay-search>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">房间押金：</label>
+                <div class="layui-input-block">
+                    <input type="text"  id="liveMoney" disabled="disabled"    class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退还押金：</label>
+                <div class="layui-input-block">
+                    <input name="refundMoney" lay-verify="required|number" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退房备注：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="leaveRemark" id="goodsPrice"  lay-verify="required" lay-reqtext="请输入退房备注：" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <script src="../lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="UTF-8"></script>
+    <script src="../lib/layui-v2.5.4/layui.js" charset="UTF-8"></script>
+    <script src="../js/page_api/config.js"></script>
+</head>
+<body>
+<div style="padding: 15px">
+    <button id="test" class="layui-btn">测试</button>
+    <button id="testtoken" class="layui-btn">测试token</button>
+    <button id="testajax" class="layui-btn">测试封装请求</button>
+    <button id="aaa" class="layui-btn">测试一下</button>
+</div>
+</body>
+</html>
+<script>
+    window.onbeforeunload = function() {return '您确定要离开吗?';};
+    var layer;
+    layui.use(["layer"],function () {
+
+        layer=layui.layer;
+        test();
+        testtoken();
+        testajax();
+        aaa();
+    })
+
+
+    function aaa(){
+        $("#aaa").click(function(){
+            $.ajax({
+             url:"http://localhost:9090/hotel/dev/api/test",
+             headers:{
+                 "authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1ODMzMjMwNzksInVzZXJuYW1lIjpudWxsfQ.Tw2YmfzDiWwqH4-MOgGeI8kWX69EP9X4zqUwD1g3YCv0D7WYV6mCz3cBPLDpLALr6cBdoKH9B20AdIAsP-WzsA",           
+             },
+             type:"get",
+             success:function(res){
+                 console.log(res)
+             }
+         });   
+        })
+    }
+    function testajax() {
+        $("#testajax").click(function () {
+            var param={"page":1,"limit":5};
+            // ajaxObj(param,{
+            //     url:"roomCategorys",
+            //     success:res=>{
+            //         console.log(res)
+            //     }
+            // })
+
+            getRequest(param,"roomCategorys",success=>{
+                console.log(success)
+            })
+        });
+    }
+    function testtoken(){
+        $("#testtoken").click(function(){
+            $.ajax({
+                url:"http://localhost:8080/api/testToken",
+                type:"get",
+                headers:{
+                    "authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1ODIwMTY1MTksInVzZXJuYW1lIjoiMTgyNzIzOTMwNzAifQ.M4iS5NbUZUPizG0QJj9bDMJ6LF8NidzF92CkMymDFxjzWpeDsviqHRyRqfp7grtgVDquioMuBep5JXBcdnKrc9g"
+                },
+                success:function (data) {
+                    layer.alert(data.message)
+                },
+                error:function (msg) {
+                    console.log(msg);
+                    // layer.alert(msg.responseJSON.message)
+                },
+            })
+        });
+    }
+    function test(){
+        $("#test").click(function(){
+            var data={"userName":"张三","userGender":1,"userAge":20,"userEmail":"1064520224@qq.com","userPhone":"18272393070"};
+            $.ajax({
+                url:"http://localhost:8080/api/user",
+                type:"post",
+                contentType:"application/json",
+                headers:{
+                    "token":"4efee945f04a41f0a180db160b3ac0b9"
+                },
+                data:JSON.stringify(data),
+                success:function (data) {
+                    layer.alert(data.success)
+                },
+                error:function (msg) {
+                    console.log(msg);
+                    // layer.alert(msg.responseJSON.message)
+                },
+            })
+        }
+        );
+    }
+</script>

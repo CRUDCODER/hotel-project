@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../css/public.css" media="all">
+    <script src="../../../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+    <script src="../../../lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <script src="../../../js/page_api/config.js"></script>
+    <script src="../../../js/page_api/goods/inventory/outbound.js"></script>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <!--        <fieldset class="layui-elem-field layuimini-search">-->
+        <!--            <legend>搜索信息</legend>-->
+        <!--            <div style="margin: 10px 10px 10px 10px">-->
+        <!--                <form class="layui-form layui-form-pane" action="">-->
+        <!--                    <div class="layui-form-item">-->
+        <!--                        <div class="layui-inline">-->
+        <!--                            <label class="layui-form-label">房间类别</label>-->
+        <!--                            <div class="layui-input-block">-->
+        <!--                                <select name="roomCategoryId" lay-filter="" id="roomCategory">-->
+        <!--                                    <option value=""></option>-->
+        <!--                                </select>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="layui-inline">-->
+        <!--                            <label class="layui-form-label">房间价格</label>-->
+        <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+        <!--                                <input type="text" name="price1"  placeholder="￥" autocomplete="off" class="layui-input">-->
+        <!--                            </div>-->
+        <!--                            <div class="layui-form-mid">-</div>-->
+        <!--                            <div class="layui-input-inline" style="width: 100px;">-->
+        <!--                                <input type="text" name="price2"  placeholder="￥" autocomplete="off" class="layui-input">-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="layui-inline">-->
+        <!--                            <label class="layui-form-label">出租状态</label>-->
+        <!--                            <div class="layui-input-block">-->
+        <!--                                <select class="layui-input-inline" name="roomFlag" lay-filter="" >-->
+        <!--                                    <option value="" ></option>-->
+        <!--                                    <option value="0" checked="checked">未出租</option>-->
+        <!--                                    <option value="1">已出租</option>-->
+        <!--                                </select>-->
+        <!--                            </div>-->
+
+        <!--                        </div>-->
+        <!--                        <div class="layui-inline">-->
+        <!--                            <a class="layui-btn" lay-submit="" lay-filter="data-search-btn">搜索</a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </form>-->
+        <!--            </div>-->
+        <!--        </fieldset>-->
+        <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-primary data-add-btn"><i class="layui-icon layui-icon-return"></i>返回</button>
+        </div>
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+    </div>
+</div>
+</div>
+</body>
+</html>
