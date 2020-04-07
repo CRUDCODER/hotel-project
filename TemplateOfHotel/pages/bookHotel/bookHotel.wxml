@@ -1,0 +1,40 @@
+<!--pages/bookHotel/bookHotel.wxml-->
+<import src='template.wxml' />
+
+<scroll-view class='bookScroll' scroll-y>
+     <view class='bookBody'>
+          <view class='bookMsg'>
+               <view style='margin-top:10rpx;'>房号/类型：{{hotelName}}</view>
+               <view style='margin-top:10rpx;font-size:12px'>物资：{{goods}}</view>
+          </view>
+
+          <template is='settingItem' data="{{caption:'入住/离店',value:startDate+'/'+endDate,needIcon:false,isInput:false}}" />
+          <template is='settingItem' data="{{caption:'房间数量 ',value:'1间 ',needIcon:true,isInput:false}}" />
+          <view style='width:100%;height:24rpx;'></view>
+          <template is='settingItem' data="{{caption:'入住人',value:memberName,needIcon:false,isInput:false}}"  />
+          <template is='settingItem' data="{{caption:'手机号码 ',value:memberPhone,needIcon:false,isInput:false,hint:'请输入手机号码',inputType:'number'}}" />
+          <template is='settingItem' data="{{caption:'身份证号 ',value:memberCard,needIcon:false,isInput:false,hint:'请输入身份证号',inputType:'text'}}" />
+          <template is='settingItem' data="{{caption:'选择优惠卷 ',value:couponsName,needIcon:true,isInput:false,hint:'请选择优惠卷',inputType:'text'}}" />  
+          <view style='width:100%;height:24rpx;'></view>
+
+
+          <view class='settingItem'>
+               <text class='caption'>备注</text>
+               <input class='remark' placeholder='请补充你的其他需求' bindinput="reservationRemark"></input>
+          </view>
+          <view style='width:100%;height:100rpx;'>
+                    <view class="weui-cells__tips" style="text-overflow:ellipsis;word-wrap:break-word;">请在预定当天12:00之后办理入住手续</view>
+                    <view class="weui-cells__tips" style="text-overflow:ellipsis;word-wrap:break-word;">入住需要缴纳押金,隔天12:00办理退房手续</view>
+                    <view class="weui-cells__tips" style="text-overflow:ellipsis;word-wrap:break-word;">否则会扣取一定比例押金。</view>
+           </view>
+     </view>
+</scroll-view>
+
+<view class='payItem'>
+     <view class='priceItem'>
+          <text>应付：</text>
+          <text>¥{{roomPrice}}</text>
+          <!-- <text wx:if='{{isDiscount}}' class='payMsg'>(已优惠{{discount}}元)</text> -->
+     </view>
+     <view class='payBtn' bindtap="payMoney">立即支付</view>
+</view>

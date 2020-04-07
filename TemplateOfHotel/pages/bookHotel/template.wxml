@@ -1,0 +1,23 @@
+<template name='settingItem'>
+     <!-- <view class='settingItem'>
+          <text class='caption'>{{caption}}</text>
+          <clearInput style='flex:1' wx:if='{{isInput}}' inputHint='{{hint}}' input-class='value' icon-class='viewHidden' inputType='{{inputType}}'></clearInput>
+          <text wx:else class='value'>{{value}}</text>
+          <image wx:if='{{needIcon}}' src='../../res/images/ic_right_arrow.png' mode='widthFix' class='icon' />
+     </view> -->
+
+
+     <view class='settingItem' wx:if="{{needIcon}}">
+     <text class='caption'>{{caption}}</text>
+          <input class='value' bindtap="open">{{value}}</input>
+          <image  src='../../res/images/ic_right_arrow.png' mode='widthFix' class='icon' />
+     </view>
+
+
+     <view class='settingItem' wx:elif="{{needIcon==false}}">
+     <text class='caption'>{{caption}}</text>
+          <clearInput style='flex:1' wx:if='{{isInput}}' inputHint='{{hint}}' input-class='value' icon-class='viewHidden' inputType='{{inputType}}'></clearInput>
+          <text wx:else class='value'>{{value}}</text>
+     </view>
+
+</template>

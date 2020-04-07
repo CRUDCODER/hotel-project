@@ -1,0 +1,58 @@
+{
+  "pages": [
+
+    "pages/homePage/homePage",
+    "pages/minePage/minePage",
+    "pages/select_city/select_city",
+    "pages/orderList/orderList",
+    "pages/searchHotel/searchHotel",
+    "pages/hotelDetail/hotelDetail",
+    "pages/hotelFilter/hotelFilter",
+    "pages/bookHotel/bookHotel",
+    "pages/login/login",
+    "pages/deposit/deposit",
+    "pages/myCoupons/myCoupons",
+    "pages/register/register",
+    "pages/msg/msg_success",
+    "pages/msg/msg_fail",
+    "pages/special/special"
+  ],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      }
+    },
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#EDEDED",
+    "navigationBarBackgroundColor": "#EDEDED",
+    "navigationBarTitleText": "四季酒店",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#f66e26",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "首页",
+        "iconPath": "res/images/basics.png",
+        "selectedIconPath": "res/images/basics_cur.png"
+      },
+      {
+        "pagePath": "pages/special/special",
+        "text": "特价",
+        "iconPath": "res/images/component.png",
+        "selectedIconPath": "res/images/component_cur.png"
+      },
+      {
+        "pagePath": "pages/minePage/minePage",
+        "text": "我的",
+        "iconPath": "res/images/about.png",
+        "selectedIconPath": "res/images/about_cur.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

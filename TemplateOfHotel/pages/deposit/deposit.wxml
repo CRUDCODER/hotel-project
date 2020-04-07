@@ -1,0 +1,62 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+        <view class="weui-cells__title">表单</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">充值金额</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入充值金额" bindinput="money"/>
+                </view>
+            </view>
+
+
+      
+            <!-- 暂时保留 可以做手机或者邮箱验证码 -->
+            <!-- <view class="weui-cell  weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">验证码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入验证码" />
+                </view>
+                <view class="weui-cell__ft">
+                    <image class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
+                </view>
+            </view> -->
+        </view>
+        <view class="weui-cells__tips">底部说明文字底部说明文字</view>
+
+
+
+
+
+
+
+
+        <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+
+    </view>
+</view>
+<view class='payItem'>
+     <view class='priceItem'>
+          <text>应付：</text>
+          <text>¥{{depositMoney}}</text>
+          <text wx:if='{{isDiscount}}' class='payMsg'>(已优惠{{discount}}元)</text>
+     </view>
+     <view class='payBtn' bindtap="payMoney">立即支付</view>
+</view>

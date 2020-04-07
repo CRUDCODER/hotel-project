@@ -1,0 +1,19 @@
+<template name='settingItem'>
+     <view wx:if="{{needIcon}}">
+          <navigator url="/pages/myCoupons/myCoupons">
+               <view class='settingItem'>
+                    <text class='caption'>{{caption}}</text>
+                    <text class='value'>{{value}}</text>
+                    <image wx:if='{{needIcon}}' src='../../res/images/ic_right_arrow.png' mode='widthFix' class='icon' />
+               </view>
+          </navigator>
+     </view>
+
+     <view wx:elif="{{needIcon==false}}">
+     <view class='settingItem'>
+          <text class='caption'>{{caption}}</text>
+          <text class='value'>{{value}}</text>
+     </view>
+     </view>
+      
+</template>
